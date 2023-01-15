@@ -6,29 +6,45 @@
   "extends": [
     "eslint:recommended",
     "airbnb-base",
-    "airbnb-typescript/base",
     "plugin:node/recommended-module",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:prettier/recommended"
   ],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": "./"
+    "sourceType": "module",
+    "ecmaVersion": "latest"
   },
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
     "no-console": "off",
+    "no-underscore-dangle": ["error", { "allow": ["__dirname", "__filename"] }],
+    "node/no-missing-import": "off",
     "node/no-unpublished-import": [
       "error",
       {
         "allowModules": ["webpack"]
       }
-    ],
-    "no-underscore-dangle": ["error", { "allow": ["__dirname", "__filename"] }],
-    "@typescript-eslint/naming-convention": "off"
-  }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:prettier/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./"
+      },
+      "plugins": ["@typescript-eslint", "prettier"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off"
+      }
+    }
+  ]
 }
