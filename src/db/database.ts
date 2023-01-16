@@ -1,4 +1,4 @@
-import type { User } from "../interfaces/interfaces.js";
+import type { User, UserBody } from "../interfaces/interfaces.js";
 
 class Database {
   private _users: User[] = [];
@@ -15,7 +15,17 @@ class Database {
     this._users.push(user);
   }
 
-  deleteUser(id: string) {
+  updateUser(id: string, userData: UserBody): User | undefined {
+    const userToUpdate = this._users.find((user) => user.id === id);
+    if (userToUpdate) {
+      userToUpdate.age = userData.age;
+      userToUpdate.username = userData.username;
+      userToUpdate.hobbies = userData.hobbies;
+    }
+    return userToUpdate;
+  }
+
+  deleteUser(id: string): void {
     this._users = this._users.filter((user) => user.id !== id);
   }
 }
