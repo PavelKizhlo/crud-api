@@ -1,0 +1,52 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:node/recommended-module",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["prettier"],
+  "ignorePatterns": ["**/*.spec.ts"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "node/no-missing-import": "off",
+    "node/no-unpublished-import": [
+      "error",
+      {
+        "allowModules": ["webpack", "supertest"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:prettier/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./"
+      },
+      "plugins": ["@typescript-eslint", "prettier"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
+}
