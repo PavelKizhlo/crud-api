@@ -20,3 +20,5 @@ server.listen(PORT, "localhost", () => {
 });
 
 server.on("error", (err) => console.log(err.message));
+
+export default server;
