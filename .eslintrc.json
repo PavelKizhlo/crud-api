@@ -17,7 +17,7 @@
   "rules": {
     "prettier/prettier": "error",
     "no-console": "off",
-    "no-underscore-dangle": ["error", { "allow": ["__dirname", "__filename"] }],
+    "no-underscore-dangle": "off",
     "node/no-missing-import": "off",
     "node/no-unpublished-import": [
       "error",
